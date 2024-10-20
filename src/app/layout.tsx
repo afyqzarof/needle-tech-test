@@ -29,6 +29,9 @@ export default function RootLayout({
               <Link href="/">Home</Link>
             </li>
             <li className="text-2xl cursor-pointer hover:underline">
+              <Link href="/breeds">Dog breeds</Link>
+            </li>
+            <li className="text-2xl cursor-pointer hover:underline">
               <Link href="/login">Login</Link>
             </li>
           </ul>
