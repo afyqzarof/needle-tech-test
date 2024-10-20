@@ -29,11 +29,7 @@ const Register = () => {
     }
 
     try {
-      const res = await createUserWithEmailAndPassword(
-        formData.email,
-        formData.password
-      );
-      console.log(res);
+      await createUserWithEmailAndPassword(formData.email, formData.password);
     } catch (error) {
       console.error(error);
     }
