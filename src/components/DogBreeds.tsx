@@ -7,7 +7,12 @@ type BreedsResponse = {
   status: string;
 };
 
-const DogBreeds = () => {
+type DogBreedsProps = {
+  selectedBreeds: string[];
+  handleSelectBreed: (breed: string) => void;
+};
+
+const DogBreeds = ({ selectedBreeds, handleSelectBreed }: DogBreedsProps) => {
   const [data, setData] = useState<string[]>([]);
 
   const fetchData = async () => {
@@ -38,7 +43,6 @@ const DogBreeds = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  console.log(data);
 
   if (!data.length) {
     return <p>Loading...</p>;
@@ -50,7 +54,12 @@ const DogBreeds = () => {
         return (
           <p
             key={breed}
-            className="p-4 border rounded hover:bg-yellow-200 cursor-pointer">
+            className={`p-4 border rounded hover:bg-yellow-200 cursor-pointer ${
+              selectedBreeds.includes(breed) ? "bg-yellow-300" : ""
+            }`}
+            onClick={() => {
+              handleSelectBreed(breed);
+            }}>
             {breed}
           </p>
         );
