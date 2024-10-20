@@ -26,10 +26,10 @@ export default function RootLayout({
 
           <ul className="flex flex-col gap-2">
             <li className="text-2xl cursor-pointer hover:underline">
-              <Link href="/">Home page</Link>
+              <Link href="/">Home</Link>
             </li>
             <li className="text-2xl cursor-pointer hover:underline">
-              <Link href="/login">Login/Register</Link>
+              <Link href="/login">Login</Link>
             </li>
           </ul>
         </aside>

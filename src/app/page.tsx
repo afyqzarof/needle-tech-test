@@ -2,6 +2,7 @@
 import SignOut from "@/components/Logout";
 import { auth, db } from "@/firebase/config";
 import { doc } from "firebase/firestore";
+import { useRouter } from "next/navigation";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useDocument } from "react-firebase-hooks/firestore";
 
@@ -11,12 +12,15 @@ const Home = () => {
     doc(db, "users", user?.uid ?? "noid")
   );
 
+  const router = useRouter();
+
   if (userLoading || userDetailLoading) {
-    return <p>loading</p>;
+    return <p>Loading...</p>;
   }
 
   if (!user) {
-    return <p>not logged in</p>;
+    router.push("/login");
+    return;
   }
 
   return (
