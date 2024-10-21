@@ -3,10 +3,14 @@ import { auth } from "@/firebase/config";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useAuthState,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 
 const Login = () => {
-  const [signInWithEmailAndPassword, user, loading, error] =
+  const [user, userLoading] = useAuthState(auth);
+  const [signInWithEmailAndPassword, _, loading] =
     useSignInWithEmailAndPassword(auth);
 
   const [formData, setFormData] = useState({
@@ -23,11 +27,11 @@ const Login = () => {
     });
   };
 
-  if (loading) {
+  if (loading || userLoading) {
     return <p>Loading...</p>;
   }
 
-  if (!user) {
+  if (user) {
     router.push("/");
     return;
   }
