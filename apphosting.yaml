@@ -3,7 +3,7 @@ env:
     value: projects/18621844882/secrets/NEEDLE_APP_ENV/versions/2
 
 -   variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
-    value: eedle-tech-test.firebaseapp.com
+    value: needle-tech-test.firebaseapp.com
 
 -   variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
     value: needle-tech-test
