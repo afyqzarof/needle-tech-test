@@ -37,6 +37,7 @@ const LikesPage = () => {
       <main className="p-4 flex flex-wrap gap-4">
         {likedPictures?.length ? (
           likedPictures?.map((src) => {
+            // eslint-disable-next-line @next/next/no-img-element
             return <img src={src} alt={src} className="h-48" key={src} />;
           })
         ) : (

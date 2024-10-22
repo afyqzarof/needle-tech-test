@@ -21,6 +21,7 @@ const DogImages = ({ breed, handleLikePicture }: DogImagesParams) => {
 
   useEffect(() => {
     getDogImages();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!imageSources) {
