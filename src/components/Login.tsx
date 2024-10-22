@@ -10,7 +10,8 @@ import {
 
 const Login = () => {
   const [user, userLoading] = useAuthState(auth);
-  const [signInWithEmailAndPassword, _, loading] =
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [signInWithEmailAndPassword, _userDetail, loading] =
     useSignInWithEmailAndPassword(auth);
 
   const [formData, setFormData] = useState({
