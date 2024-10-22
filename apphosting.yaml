@@ -1,0 +1,18 @@
+env:
+-   variable: NEXT_PUBLIC_FIREBASE_API_KEY
+    value: projects/18621844882/secrets/NEEDLE_APP_ENV/versions/2
+
+-   variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+    value: eedle-tech-test.firebaseapp.com
+
+-   variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+    value: needle-tech-test
+
+-   variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+    value: needle-tech-test.appspot.com
+
+-   variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+    value: 18621844882
+
+-   variable: NEXT_PUBLIC_FIREBASE_APP_ID
+    value: 1:18621844882:web:476f85eb35ce743551454b
