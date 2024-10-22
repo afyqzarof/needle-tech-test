@@ -33,7 +33,7 @@ export default function RootLayout({
             </li>
           </ul>
         </aside>
-        <div className="col-span-5 max-h-screen overflow-scroll p-4">
+        <div className="col-span-5 max-h-screen overflow-scroll">
           {children}
         </div>
       </body>

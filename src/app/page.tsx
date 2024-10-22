@@ -1,5 +1,6 @@
 "use client";
 import DogImages from "@/components/DogImages";
+import Header from "@/components/Header";
 import SignOut from "@/components/Logout";
 import { auth, db } from "@/firebase/config";
 import { doc } from "firebase/firestore";
@@ -14,6 +15,7 @@ const Home = () => {
   );
 
   const router = useRouter();
+  const userData = userDetail?.data();
 
   if (userLoading || userDetailLoading) {
     return <p>Loading...</p>;
@@ -30,11 +32,11 @@ const Home = () => {
 
   return (
     <main>
-      <p>hello {userDetail?.data()?.email}</p>
+      <Header title={`${userData?.email}'s Feed`} />
       <SignOut />
-      <div className="grid grid-cols-3 gap-4 ">
-        {userDetail?.data()?.favouriteBreeds?.length &&
-          userDetail?.data()?.favouriteBreeds.map((breed: string) => {
+      <div className="grid grid-cols-3 gap-4 p-4">
+        {userData?.favouriteBreeds?.length &&
+          userData?.favouriteBreeds.map((breed: string) => {
             return <DogImages breed={breed} key={breed} />;
           })}
       </div>

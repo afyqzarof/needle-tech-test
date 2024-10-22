@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 
 type DogImagesParams = {
   breed: string;
 };
 const DogImages = ({ breed }: DogImagesParams) => {
-  const [imageSources, setImagesSources] = useState([]);
+  const [imageSources, setImagesSources] = useState<string[] | null>(null);
 
   const formatParam = (breed: string) => {
     return breed.split(" ").reverse().join("/");
@@ -23,8 +22,12 @@ const DogImages = ({ breed }: DogImagesParams) => {
     getDogImages();
   }, []);
 
-  if (!imageSources.length) {
+  if (!imageSources) {
     return <p>Loading...</p>;
+  }
+
+  if (!imageSources.length) {
+    return <p>No images</p>;
   }
 
   return (
@@ -32,7 +35,14 @@ const DogImages = ({ breed }: DogImagesParams) => {
       <h2 className="text-2xl">{breed}</h2>
       <div className="flex flex-wrap gap-4 mb-4">
         {imageSources.map((src) => {
-          return <img src={src} alt={src} key={src} className="h-32" />;
+          return (
+            <img
+              src={src}
+              alt={src}
+              key={src}
+              className="h-32 hover:border-2 cursor-pointer"
+            />
+          );
         })}
       </div>
     </article>
