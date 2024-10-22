@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 
 type DogImagesParams = {
   breed: string;
+  handleLikePicture: (src: string) => void;
 };
-const DogImages = ({ breed }: DogImagesParams) => {
+const DogImages = ({ breed, handleLikePicture }: DogImagesParams) => {
   const [imageSources, setImagesSources] = useState<string[] | null>(null);
 
   const formatParam = (breed: string) => {
@@ -36,11 +37,15 @@ const DogImages = ({ breed }: DogImagesParams) => {
       <div className="flex flex-wrap gap-4 mb-4">
         {imageSources.map((src) => {
           return (
+            // eslint-disable-next-line @next/next/no-img-element
             <img
               src={src}
               alt={src}
               key={src}
               className="h-32 hover:border-2 cursor-pointer"
+              onClick={() => {
+                handleLikePicture(src);
+              }}
             />
           );
         })}

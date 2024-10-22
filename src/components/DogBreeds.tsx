@@ -27,10 +27,8 @@ const DogBreeds = ({ selectedBreeds, handleSelectBreed }: DogBreedsProps) => {
 
     for (const breed in dogBreeds) {
       if (dogBreeds[breed].length === 0) {
-        // If no sub-breeds, add the breed itself
         breeds.push(breed);
       } else {
-        // If there are sub-breeds, combine breed and sub-breed
         for (const subBreed of dogBreeds[breed]) {
           breeds.push(`${subBreed} ${breed}`);
         }
