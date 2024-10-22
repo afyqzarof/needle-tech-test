@@ -40,6 +40,7 @@ const DogBreeds = ({ selectedBreeds, handleSelectBreed }: DogBreedsProps) => {
 
   useEffect(() => {
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!data.length) {
