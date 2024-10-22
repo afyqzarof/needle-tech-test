@@ -1,7 +1,6 @@
 "use client";
 import DogImages from "@/components/DogImages";
 import Header from "@/components/Header";
-import SignOut from "@/components/Logout";
 import { auth, db } from "@/firebase/config";
 import { doc, updateDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
@@ -47,8 +46,7 @@ const Home = () => {
   return (
     <>
       <main>
-        <Header title={`${userData?.email}'s Feed`} />
-        <SignOut />
+        <Header title={`${userData?.email}'s Feed`} /> 
         <div className="grid grid-cols-3 gap-4 p-4">
           {userData?.favouriteBreeds?.length &&
             userData?.favouriteBreeds.map((breed: string) => {

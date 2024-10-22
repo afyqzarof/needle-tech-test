@@ -1,8 +1,11 @@
+"use client";
 import { auth } from "@/firebase/config";
+import { useRouter } from "next/navigation";
 import { useSignOut } from "react-firebase-hooks/auth";
 
 const SignOut = () => {
   const [signOut, loading, error] = useSignOut(auth);
+  const router = useRouter();
 
   if (error) {
     return (
@@ -15,17 +18,16 @@ const SignOut = () => {
     return <p>Loading...</p>;
   }
   return (
-    <div className="App">
-      <button
-        onClick={async () => {
-          const success = await signOut();
-          if (success) {
-            alert("You are sign out");
-          }
-        }}>
-        Sign out
-      </button>
-    </div>
+    <button
+      className="text-xl"
+      onClick={async () => {
+        const success = await signOut();
+        if (success) {
+          router.push("/login");
+        }
+      }}>
+      Log out
+    </button>
   );
 };
 

@@ -31,6 +31,9 @@ export default function RootLayout({
             <li className="text-2xl cursor-pointer hover:underline">
               <Link href="/breeds">Dog breeds</Link>
             </li>
+            <li className="text-2xl cursor-pointer hover:underline">
+              <Link href="/likes">Likes</Link>
+            </li>
           </ul>
         </aside>
         <div className="col-span-5 max-h-screen overflow-scroll">
