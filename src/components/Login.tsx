@@ -36,9 +36,16 @@ const Login = () => {
     return;
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    signInWithEmailAndPassword(formData.email, formData.password);
+    const user = await signInWithEmailAndPassword(
+      formData.email,
+      formData.password
+    );
+
+    if (!user) {
+      return;
+    }
     router.push("/");
   };
 

@@ -3,6 +3,7 @@ import DogImages from "@/components/DogImages";
 import Header from "@/components/Header";
 import { auth, db } from "@/firebase/config";
 import { doc, updateDoc } from "firebase/firestore";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useDocument } from "react-firebase-hooks/firestore";
@@ -46,9 +47,9 @@ const Home = () => {
   return (
     <>
       <main>
-        <Header title={`${userData?.email}'s Feed`} /> 
+        <Header title={`${userData?.email}'s Feed`} />
         <div className="grid grid-cols-3 gap-4 p-4">
-          {userData?.favouriteBreeds?.length &&
+          {userData?.favouriteBreeds?.length ? (
             userData?.favouriteBreeds.map((breed: string) => {
               return (
                 <DogImages
@@ -57,7 +58,15 @@ const Home = () => {
                   handleLikePicture={handleLikePicture}
                 />
               );
-            })}
+            })
+          ) : (
+            <p>
+              No favourite dog breeds. Select{" "}
+              <Link href={"/breeds"} className="underline">
+                here
+              </Link>
+            </p>
+          )}
         </div>
       </main>
       <ToastContainer />

@@ -2,6 +2,7 @@
 import Header from "@/components/Header";
 import { auth, db } from "@/firebase/config";
 import { doc } from "firebase/firestore";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -34,12 +35,17 @@ const LikesPage = () => {
     <>
       <Header title="Liked pictures" />
       <main className="p-4 flex flex-wrap gap-4">
-        {likedPictures.length ? (
-          likedPictures.map((src) => {
+        {likedPictures?.length ? (
+          likedPictures?.map((src) => {
             return <img src={src} alt={src} className="h-48" key={src} />;
           })
         ) : (
-          <p>No liked pictures</p>
+          <p>
+            No liked pictures. Select{" "}
+            <Link href={"/"} className="underline">
+              here
+            </Link>
+          </p>
         )}
       </main>
     </>

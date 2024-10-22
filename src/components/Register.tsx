@@ -2,8 +2,11 @@
 import { useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/config";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Register = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -39,6 +42,7 @@ const Register = () => {
 
     try {
       await createUserWithEmailAndPassword(formData.email, formData.password);
+      router.push("/");
     } catch (error) {
       console.error(error);
     }
@@ -105,9 +109,12 @@ const Register = () => {
 
         <button
           type="submit"
-          className="w-full bg-yellow-600 text-white py-2 px-4 rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2">
+          className="w-full bg-yellow-600 text-white py-2 px-4 rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 mb-4">
           Register
         </button>
+        <Link href="/login" className="hover:underline mt-4">
+          Already have an account? Login here
+        </Link>
       </form>
     </div>
   );
