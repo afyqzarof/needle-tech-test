@@ -1,6 +1,7 @@
 "use client";
 import DogBreeds from "@/components/DogBreeds";
 import Header from "@/components/Header";
+import Loading from "@/components/Loading";
 import { auth, db } from "@/firebase/config";
 import removeItemOnce from "@/utils/remove-from-array";
 import { doc, updateDoc } from "firebase/firestore";
@@ -47,16 +48,22 @@ const Breeds = () => {
     }
   }, [userDetail, userDetailLoading]);
 
-  if (userLoading || userDetailLoading) {
-    return <p>Loading...</p>;
+  if (!user) {
+    router.push("/login");
+    return;
   }
+
+  if (userLoading || userDetailLoading) {
+    return <Loading/>;
+  }
+
 
   return (
     <>
       <Header title="Select your three favourite dog breeds" />
-      <main className="flex flex-col gap-12 p-4">
-        <div>
-          <h3 className="text-xl mb-4">Selected breeds:</h3>
+      <main className="flex flex-col gap-8 p-8">
+        <div className="border-2 border-lg p-4 rounded-lg border-green-900">
+          <h3 className="text-xl mb-4">My top three breeds:</h3>
           <article className="flex gap-4 mb-4">
             {selectedBreeds.map((breed) => {
               return (
@@ -67,12 +74,12 @@ const Breeds = () => {
             })}
           </article>
           <button
-            className="bg-yellow-300 px-4 py-2 rounded"
+            className="primary-button"
             onClick={handleSave}>
-            Save
+            Next
           </button>
         </div>
-        <div>
+        <div className="border-2 border-lg p-4 rounded-lg border-green-900">
           <h4 className="text-xl mb-4">Breeds:</h4>
           <DogBreeds
             selectedBreeds={selectedBreeds}

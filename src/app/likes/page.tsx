@@ -1,7 +1,9 @@
 "use client";
 import Header from "@/components/Header";
+import Loading from "@/components/Loading";
 import { auth, db } from "@/firebase/config";
 import { doc } from "firebase/firestore";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -19,7 +21,7 @@ const LikesPage = () => {
   const likedPictures: string[] = userData?.likedPictures;
 
   if (userLoading || userDetailLoading) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   if (!user) {
@@ -27,27 +29,33 @@ const LikesPage = () => {
     return;
   }
 
-  if (userLoading || userDetailLoading) {
-    return <p>Loading...</p>;
-  }
-
   return (
     <>
       <Header title="Liked pictures" />
-      <main className="p-4 flex flex-wrap gap-4">
-        {likedPictures?.length ? (
-          likedPictures?.map((src) => {
-            // eslint-disable-next-line @next/next/no-img-element
-            return <img src={src} alt={src} className="h-48" key={src} />;
-          })
-        ) : (
-          <p>
-            No liked pictures. Select{" "}
-            <Link href={"/"} className="underline">
-              here
-            </Link>
-          </p>
-        )}
+      <main className="p-8 gap-4">
+        <div className="border-2 border-green-900 flex flex-wrap gap-4 p-4 rounded-lg">
+          {likedPictures?.length ? (
+            likedPictures?.map((src) => {
+              return (
+                <Image
+                  src={src}
+                  alt={src}
+                  className="h-48 w-auto"
+                  key={src}
+                  width={100}
+                  height={100}
+                />
+              );
+            })
+          ) : (
+            <p>
+              No liked pictures. Select{" "}
+              <Link href={"/"} className="underline">
+                here
+              </Link>
+            </p>
+          )}
+        </div>
       </main>
     </>
   );

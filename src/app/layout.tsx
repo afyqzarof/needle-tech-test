@@ -21,17 +21,17 @@ export default function RootLayout({
   return (
     <html lang="en" className={futura.className}>
       <body className="grid grid-cols-6">
-        <aside className="bg-yellow-200 p-4 h-screen col-span-1 flex flex-col gap-4">
-          <h2 className="text-6xl">Dog website</h2>
+        <aside className="bg-yellow-400 p-4 h-screen col-span-1 flex flex-col gap-4">
+          <h2 className="text-7xl break-words mb-6">Dogs on web</h2>
 
-          <ul className="flex flex-col gap-2">
-            <li className="text-2xl cursor-pointer hover:underline">
+          <ul className="flex flex-col gap-4">
+            <li className="text-4xl cursor-pointer hover:underline">
               <Link href="/">Home</Link>
             </li>
-            <li className="text-2xl cursor-pointer hover:underline">
+            <li className="text-4xl cursor-pointer hover:underline">
               <Link href="/breeds">Dog breeds</Link>
             </li>
-            <li className="text-2xl cursor-pointer hover:underline">
+            <li className="text-4xl cursor-pointer hover:underline">
               <Link href="/likes">Likes</Link>
             </li>
           </ul>

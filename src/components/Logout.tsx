@@ -2,6 +2,7 @@
 import { auth } from "@/firebase/config";
 import { useRouter } from "next/navigation";
 import { useSignOut } from "react-firebase-hooks/auth";
+import Loading from "./Loading";
 
 const SignOut = () => {
   const [signOut, loading, error] = useSignOut(auth);
@@ -15,7 +16,7 @@ const SignOut = () => {
     );
   }
   if (loading) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
   return (
     <button
