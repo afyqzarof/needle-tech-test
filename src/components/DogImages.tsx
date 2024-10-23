@@ -1,4 +1,6 @@
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import Loading from "./Loading";
 
 type DogImagesParams = {
   breed: string;
@@ -25,7 +27,7 @@ const DogImages = ({ breed, handleLikePicture }: DogImagesParams) => {
   }, []);
 
   if (!imageSources) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   if (!imageSources.length) {
@@ -33,20 +35,22 @@ const DogImages = ({ breed, handleLikePicture }: DogImagesParams) => {
   }
 
   return (
-    <article className="flex flex-col gap-4 border rounded-md p-4">
-      <h2 className="text-2xl">{breed}</h2>
+    <article className="flex flex-col gap-4 border-2 rounded-lg p-4 border-green-900">
+      <h2 className="text-2xl uppercase">{breed}</h2>
       <div className="flex flex-wrap gap-4 mb-4">
         {imageSources.map((src) => {
           return (
             // eslint-disable-next-line @next/next/no-img-element
-            <img
+            <Image
               src={src}
               alt={src}
               key={src}
-              className="h-32 hover:border-2 cursor-pointer"
+              className="h-32 hover:border-2 cursor-pointer w-auto"
               onClick={() => {
                 handleLikePicture(src);
               }}
+              height={100}
+              width={100}
             />
           );
         })}

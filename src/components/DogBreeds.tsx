@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Loading from "./Loading";
 
 type BreedsResponse = {
   message: Record<string, string[]>;
@@ -40,11 +41,11 @@ const DogBreeds = ({ selectedBreeds, handleSelectBreed }: DogBreedsProps) => {
 
   useEffect(() => {
     fetchData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!data.length) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   return (
@@ -53,8 +54,8 @@ const DogBreeds = ({ selectedBreeds, handleSelectBreed }: DogBreedsProps) => {
         return (
           <p
             key={breed}
-            className={`p-4 border rounded hover:bg-yellow-200 cursor-pointer ${
-              selectedBreeds.includes(breed) ? "bg-yellow-300" : ""
+            className={`secondary-button cursor-pointer ${
+              selectedBreeds.includes(breed) ? "bg-yellow-100" : ""
             }`}
             onClick={() => {
               handleSelectBreed(breed);

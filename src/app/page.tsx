@@ -1,6 +1,7 @@
 "use client";
 import DogImages from "@/components/DogImages";
 import Header from "@/components/Header";
+import Loading from "@/components/Loading";
 import { auth, db } from "@/firebase/config";
 import { doc, updateDoc } from "firebase/firestore";
 import Link from "next/link";
@@ -32,7 +33,7 @@ const Home = () => {
   };
 
   if (userLoading || userDetailLoading) {
-    return <p>Loading...</p>;
+    return <Loading/>;
   }
 
   if (!user) {
@@ -40,15 +41,11 @@ const Home = () => {
     return;
   }
 
-  if (userLoading || userDetailLoading) {
-    return <p>Loading...</p>;
-  }
-
   return (
     <>
       <main>
         <Header title={`${userData?.email}'s Feed`} />
-        <div className="grid grid-cols-3 gap-4 p-4">
+        <div className="grid grid-cols-3 gap-8 p-8">
           {userData?.favouriteBreeds?.length ? (
             userData?.favouriteBreeds.map((breed: string) => {
               return (

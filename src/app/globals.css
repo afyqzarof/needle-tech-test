@@ -8,3 +8,11 @@
   height: 40%;
   inset: 50% !important;
 }
+
+.primary-button {
+  @apply bg-yellow-600 hover:bg-yellow-800 rounded-md capitalize px-4 py-2
+}
+
+.secondary-button{
+  @apply border-2 rounded-md border-yellow-600 text-yellow-600 hover:bg-yellow-50 active:bg-yellow-100 px-4 py-2 capitalize
+}

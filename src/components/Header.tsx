@@ -5,7 +5,7 @@ type HeaderProps = {
 };
 const Header = ({ title }: HeaderProps) => {
   return (
-    <div className="p-4 bg-yellow-100 flex justify-between items-center">
+    <div className="px-8 py-4 bg-blue-500 flex justify-between items-center">
       <h1 className="text-3xl">{title}</h1>
       <SignOut />
     </div>

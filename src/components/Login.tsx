@@ -7,6 +7,7 @@ import {
   useAuthState,
   useSignInWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
+import Loading from "./Loading";
 
 const Login = () => {
   const [user, userLoading] = useAuthState(auth);
@@ -29,7 +30,7 @@ const Login = () => {
   };
 
   if (loading || userLoading) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   if (user) {
@@ -54,13 +55,13 @@ const Login = () => {
     <div className="flex items-center justify-center min-h-screen ">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-lg shadow-md w-full max-w-sm">
+        className="bg-white p-6 rounded-lg border-2 border-green-900 w-full max-w-sm">
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
 
         <div className="mb-4">
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-gray-700">
+            className="block text-base font-medium text-gray-700">
             Email
           </label>
           <input
@@ -69,15 +70,16 @@ const Login = () => {
             id="email"
             value={formData.email}
             onChange={handleChange}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
+            className="mt-1 block w-full px-3 py-2 border-2 border-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-yellow-600 focus:border-yellow-600 sm:text-sm"
             required
+            placeholder="rueben@exaple.com"
           />
         </div>
 
         <div className="mb-6">
           <label
             htmlFor="password"
-            className="block text-sm font-medium text-gray-700">
+            className="block text-base font-medium text-gray-700">
             Password
           </label>
           <input
@@ -86,14 +88,13 @@ const Login = () => {
             id="password"
             value={formData.password}
             onChange={handleChange}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
+            className="mt-1 block w-full px-3 py-2 border-2 border-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-yellow-600 focus:border-yellow-600 sm:text-sm"
             required
+            placeholder="Your password here"
           />
         </div>
 
-        <button
-          type="submit"
-          className="w-full bg-yellow-600 text-white py-2 px-4 rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 mb-2">
+        <button type="submit" className="w-full primary-button mb-4">
           Login
         </button>
         <Link href="/register" className="hover:underline">

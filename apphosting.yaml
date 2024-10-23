@@ -1,6 +1,6 @@
 env:
 -   variable: NEXT_PUBLIC_FIREBASE_API_KEY
-    value: projects/18621844882/secrets/NEEDLE_APP_ENV/versions/2
+    value: AIzaSyBtu5Df4L3LpUwHq9nxkg-O0bH60FYHKGw
 
 -   variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
     value: needle-tech-test.firebaseapp.com
