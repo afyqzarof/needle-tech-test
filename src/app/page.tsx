@@ -33,7 +33,7 @@ const Home = () => {
   };
 
   if (userLoading || userDetailLoading) {
-    return <Loading/>;
+    return <Loading />;
   }
 
   if (!user) {

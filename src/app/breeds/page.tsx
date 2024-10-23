@@ -54,9 +54,8 @@ const Breeds = () => {
   }
 
   if (userLoading || userDetailLoading) {
-    return <Loading/>;
+    return <Loading />;
   }
-
 
   return (
     <>
@@ -73,9 +72,7 @@ const Breeds = () => {
               );
             })}
           </article>
-          <button
-            className="primary-button"
-            onClick={handleSave}>
+          <button className="primary-button" onClick={handleSave}>
             Next
           </button>
         </div>
